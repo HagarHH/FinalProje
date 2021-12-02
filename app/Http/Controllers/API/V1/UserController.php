@@ -27,7 +27,7 @@ return response()->json("Failed");
 
    public function register(Request $request)
    {
-       $user=User:: Create([
+       return User:: create([
 
         'name'=>$request->name,
         'email'=>$request->email,
@@ -36,10 +36,11 @@ return response()->json("Failed");
         ]);
 
        $profile =new Profile();
-       $profile->user_id=$user->id;
+       $profile->user_id=$request->id;
        $profile->bio=$request->bio;
        $profile->fcm_token=$request->fcm_token;
-
+       $profile->save();
+       return response()->json("Signed Up successfully");
    }
 
    public function logout(Request $request)

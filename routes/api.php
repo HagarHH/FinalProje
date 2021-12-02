@@ -16,8 +16,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::post("/User/login","API\V1\UserController@login");
 Route::get("/User/logout","API\V1\UserController@logout");
-
 Route::post("/User/register","API\V1\UserController@register");
+
 Route::middleware('auth:api')->group(function () {
 
   Route::get("/Categories/index","API\V1\CategoryController@index");
