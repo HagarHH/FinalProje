@@ -37,6 +37,8 @@ Route::middleware('auth:api')->group(function () {
   Route::put("/Comment/update/{id}","API\V1\CommentController@update");
   Route::delete('/Comment/delete/{id}',"API\V1\CommentController@destroy");
 
+  Route::get("/Profile/show/{id}","API\V1\ProfileController@show");
+  Route::put("/Profile/update/{id}","API\V1\ProfileController@update");
 
 
 });
