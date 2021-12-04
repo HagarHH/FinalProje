@@ -39,6 +39,7 @@ Route::middleware('auth:api')->group(function () {
 
   Route::get("/Profile/show/{id}","API\V1\ProfileController@show");
   Route::put("/Profile/update/{id}","API\V1\ProfileController@update");
+  
 
 
 });
