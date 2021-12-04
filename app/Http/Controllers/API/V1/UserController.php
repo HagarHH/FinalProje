@@ -27,20 +27,20 @@ return response()->json("Failed");
 
    public function register(Request $request)
    {
-       $user =  User:: create([
+       $user =  new User();
 
-        'name'=>$request->name,
-        'email'=>$request->email,
-        'password'=>Hash::make($request->password),
-        'api_token'=>Str::random(88),
-        ]);
+       $user->name = $request->name;
+       $user->email = $request->email;
+       $user->password = Hash::make($request->password);
+       $user->api_token = Str::random(60);
+       $user->save();
 
        $profile =new Profile();
        $profile->user_id=$user->id;
        $profile->bio=$request->bio;
        $profile->fcm_token=$request->fcm_token;
        $profile->save();
-       return response()->json("Signed Up successfully");
+       return response()->json($user);
    }
 
    public function logout(Request $request)
